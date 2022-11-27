@@ -1,25 +1,27 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faComment,
-    faShoppingBasket,
     faStar,
     faLock,
     faTruck,
     faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert'
 
 const ProductoDetalles = () => {
+    const showModal = () => {
+        swal("El producto ha sido agregado al carrito")
+    }
     return (
         <section className="padding-y bg-white shadow-sm">
             <div className="container">
                 <div className="row">
                     <aside className="col-lg-5">
                         <article className="gallery-wrap">
-                            <a href="#" className="img-big-wrap">
+                            <p className="img-big-wrap">
                                 <img alt="" className="rounded" />
-                            </a>
+                            </p>
                         </article>
                     </aside>
                     <div className="col-lg-4">
@@ -44,9 +46,9 @@ const ProductoDetalles = () => {
                                     <span className="text-muted"> /por unidad</span>
                                 </div>
                                 <div className="mb-4">
-                                    <Link to="/" className="btn btn-primary w-100 mb-2">
+                                    <p onClick={() => showModal()} to="/" className="btn btn-primary w-100 mb-2">
                                         Añadir al Carrito
-                                    </Link>
+                                    </p>
                                     <Link to="/carrito" className="btn btn-light w-100 mb-2">
                                         Visualizar mi Carrito
                                     </Link>

@@ -133,3 +133,42 @@ label.error {
 #register {
   margin-top: 20px;
 }
+
+.small-container {
+  margin: auto;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 20px;
+  background-color: #f8f9fa;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.row-2 {
+  font-size: medium;
+  justify-content: space-between;
+  margin: 50px 50px 50px auto;
+  width: 50%;
+  text-align: right;
+}
+
+.filter {
+  font-size: medium;
+  font-weight: 600;
+}
+
+.filter-select {
+  padding-bottom: 3px;
+  width: 150px;
+  font-size: small;
+  font-weight: 400;
+  margin: 0px 0px 0px auto;
+  border-radius: 5px;
+  color: #9da1a7;
+  background-color: #f9f9f9;
+}
