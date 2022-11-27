@@ -26,12 +26,6 @@
     flex-direction: column;
   }
 
-  .gallery-wrap .thumbs-wrap {
-    margin-bottom: 1rem;
-    white-space: nowrap;
-    overflow-x: auto;
-  }
-
   .mobile-order-first {
     order: -1;
   }

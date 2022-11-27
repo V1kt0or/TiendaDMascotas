@@ -1,6 +1,7 @@
 import React from 'react'
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from 'react-router-dom';
 
 //Productos más destacados o random, quien sabe xd
 //Este es el slider del producto
@@ -13,9 +14,9 @@ export const Carrito = () => {
                     <img alt="" />
                 </div>
                 <div className="info-wrap">
-                    <p className="title">
+                    <Link to="/producto" className="title">
                         Nombre Producto
-                    </p>
+                    </Link>
                     <div className="rating-wrap">
                         <ul className="rating-stars">
                             <li className="stars-active" style={{ width: "90%" }}>
