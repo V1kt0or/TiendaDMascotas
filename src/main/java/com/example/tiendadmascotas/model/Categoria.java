@@ -1,8 +1,11 @@
 package com.example.tiendadmascotas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -24,6 +27,9 @@ public class Categoria {
     @Column(name = "descripcion")
     private Integer descripcion;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Producto producto;
+    @OneToMany(mappedBy = "categoria",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<CategoriaProducto> categoriaProductos = new LinkedHashSet<>();
+
+
 }

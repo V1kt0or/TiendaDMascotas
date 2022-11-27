@@ -37,7 +37,7 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Categoria> categorias = new LinkedHashSet<>();
+    private Set<CategoriaProducto> categoriaProductos = new LinkedHashSet<>();
 
     @OneToOne(mappedBy = "producto")
     private Precio precio;
