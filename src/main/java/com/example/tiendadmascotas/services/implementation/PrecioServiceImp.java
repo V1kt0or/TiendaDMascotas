@@ -7,7 +7,9 @@ import com.example.tiendadmascotas.repository.PrecioRepository;
 import com.example.tiendadmascotas.repository.ProductoRepository;
 import com.example.tiendadmascotas.services.PrecioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PrecioServiceImp implements PrecioService {
 
     @Autowired
