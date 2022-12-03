@@ -120,4 +120,210 @@ Una vez generado tendran que colocarlo en la parte de Autorización Bearer Token
   ```javascript
     http://localhost:8080/usuarios/ElIdDelUsuario
   ```
+  
 
+## Ruta Categorias
+
+- **Crear categoria   POST** 
+
+  -Ruta 
+  ```javascript
+    http://localhost:8080/categorias/
+
+  ```
+
+  -Json enviado
+
+  ```javascript
+
+    {
+    "nombre": "nombre categoria",
+    "descripcion" :"descripción categoria"
+    }
+
+  ```
+
+- **Ver categorias     GET** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/categorias/
+  ```
+
+  -Respuesta
+
+  ```javascript
+  {
+    {
+        "id": 1,
+        "nombre": "nombre categoria 1",
+        "descripcion": "categoria...."
+    },
+    {
+        "id": 2,
+        "nombre": "nombre categoria 2",
+        "descripcion": "categoria ......"
+    }
+  }
+  ```
+- **Ver categoria     GET** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/categorias/IdCategoria
+  ```
+
+  -Respuesta
+
+  ```javascript
+    {
+        "id": 1,
+        "nombre": "nombre categoria 1",
+        "descripcion": "categoria...."
+    }
+  ```
+- **Eliminar categoria     DELETE** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/categorias/IdCategoria
+  ```
+
+## Ruta Productos
+
+- **Crear producto   POST** 
+
+  -Ruta 
+  ```javascript
+    http://localhost:8080/productos/
+
+  ```
+
+  -Json enviado  (NOTA: Asegúrese de usar productoR y precioR como se muestra en el ejemplo )
+
+  ```javascript
+
+    {
+    "productoR":{
+        "nombre": "comida",
+        "cantidad":  "32",
+        "detalles": "ninguno",
+        "disponible": "true",
+        "categoria":{
+            "id" : "IdDeLaCategoria"
+        }
+    },
+    "precioR":{
+        "precio": "555",
+        "descuento": "110"
+    }
+  }
+  ```
+- **Ver productos     GET** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/productos/
+  ```
+
+  -Respuesta (NOTA: El primer id se refiere al ID del precios, mientras que el segundo ID es del Producto),
+
+  ```javascript
+  {
+    {
+        "id": 1,
+        "precio": 25.0,
+        "descuento": 0.0,
+        "producto": {
+            "id": 1,
+            "nombre": "peluche",
+            "cantidad": 5,
+            "detalles": "ninguno",
+            "disponible": true,
+            "categoria": {
+                "id": 1,
+                "nombre": "juguete",
+                "descripcion": "ninguna"
+            }
+        }
+    },
+    {
+        ....
+        ....
+        ....
+    },
+    
+  }
+  ```
+  
+- **Ver producto     GET** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/productos/IdDelProducto
+  ```
+
+  -Respuesta (NOTA: El primer id se refiere al ID del precios, mientras que el segundo ID es del Producto),
+
+  ```javascript
+  {
+        "id": 1,
+        "precio": 25.0,
+        "descuento": 0.0,
+        "producto": {
+            "id": IdDelProducto,
+            "nombre": "peluche",
+            "cantidad": 5,
+            "detalles": "ninguno",
+            "disponible": true,
+            "categoria": {
+                "id": 1,
+                "nombre": "juguete",
+                "descripcion": "ninguna"
+            }
+        }
+  }
+  ```
+  
+  - **Actualizar producto     PUT** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/productos/IdDelProducto
+  ```
+
+  -Json enviado (NOTA: Asegurarse que el ID del Producto y del Precio sean los correctos),
+
+  ```javascript
+  {
+      "productoR":{
+          "id": IdDelProducto,
+          "nombre": "nombre nuevo",
+          "cantidad":  "30",
+          "detalles": "ninguno",
+          "disponible": "true",
+          "categoria":{
+              "id" : "2"
+          }
+      },
+      "precioR":{
+          "id": IdDelPrecio,
+          "precio": "5550",
+          "descuento": "10"
+      }
+  }
+  ```
+  
+  - **Eliminar producto     DELETE** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/productos/IdDelProducto
+  ```
