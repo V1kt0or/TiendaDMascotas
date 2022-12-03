@@ -2,7 +2,6 @@ package com.example.tiendadmascotas.controller;
 
 import com.example.tiendadmascotas.model.Categoria;
 import com.example.tiendadmascotas.model.Producto;
-import com.example.tiendadmascotas.services.CategoriaProductoService;
 import com.example.tiendadmascotas.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,24 +13,17 @@ import java.util.List;
 @CrossOrigin("*")
 public class ProductoController {
 
-    static class ProductoyCategoria {
-        public Producto productoR;
-        public List<Categoria> categoriaR;
-    }
     @Autowired
     public ProductoService productoService;
 
-    @Autowired
-    public CategoriaProductoService categoriaProductoService;
+
 
     @PostMapping("/")
-    public Producto guardarProducto(@RequestBody ProductoyCategoria productoyCategoria){
-        productoService.guardarProducto(productoyCategoria.productoR);
-        for (Categoria categoria:productoyCategoria.categoriaR){
-            categoriaProductoService.añadirCategoriaProducto(categoria,productoyCategoria.productoR);
-        }
+    public Producto guardarProducto(@RequestBody Producto producto){
 
-        return productoService.guardarProducto(productoyCategoria.productoR);
+
+
+        return productoService.guardarProducto(producto);
         //-------------------------------
         //GENERAR UNA EXCEPCIÓN PARA VER CUANDO AÑADAN UNA CATEGORIA QUE NO EXISTE
         //O QUE YA EXISTA LA RELACION CATEGORIAPRODUCTO
@@ -39,18 +31,27 @@ public class ProductoController {
     }
 
     @GetMapping("/{productoId}")
-    public Producto obtenerCategoria(@PathVariable("productoId") Long productoId){
-        categoriaProductoService.f
+    public Producto obtenerProducto(@PathVariable("productoId") Long productoId){
         return productoService.verProducto(productoId);
     }
 
+    @PutMapping("/{productoId}")
+    public Producto modificarProducto(@RequestBody Producto producto){
+        return productoService.editarProducto(producto);
+    }
 
     @GetMapping("/")
-    public List<Producto> obtenerTodosProcutos(){
+    public List<Producto> obtenerTodosProductos(){
         return productoService.verTodosProductos();
     }
 
-    @DeleteMapping("/{categoryId}")
+
+    @GetMapping("/categoria/{categoryId}")
+    public List<Producto> obtenerTodosProductos(@PathVariable("categoryId") Long categoryId){
+        return productoService.verProducstosDeCategoria(categoryId);
+    }
+
+    @DeleteMapping("/{productoId}")
     public void eliminarProducto(@PathVariable("productoId") Long productoId){
         productoService.eliminarProducto(productoId);
     }

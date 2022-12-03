@@ -11,16 +11,20 @@ import javax.persistence.*;
 @Builder
 
 @Entity
-@Table(name = "categoriaProductos")
-public class CategoriaProducto {
+@Table(name = "imagenes")
+public class Imagen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
+
+    private String nombreImagen;
+
+    private String tipoImagen;
+
+    @Lob
+    private byte[] dataImagen;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Producto producto;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Categoria categoria;
 }

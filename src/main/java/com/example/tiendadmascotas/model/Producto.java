@@ -35,9 +35,8 @@ public class Producto {
     @Column(name = "disponible")
     private Boolean disponible;
 
-    @OneToMany(mappedBy = "producto",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<CategoriaProducto> categoriaProductos = new LinkedHashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Categoria categoria;
 
     @OneToOne(mappedBy = "producto")
     private Precio precio;
@@ -45,4 +44,8 @@ public class Producto {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "producto")
     @JsonIgnore
     private Set<CarritoProducto> carritoProductos = new HashSet<>();
+
+    @OneToMany(mappedBy = "producto",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Imagen> imagenes = new LinkedHashSet<>();
 }

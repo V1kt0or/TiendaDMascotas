@@ -29,7 +29,7 @@ public class Categoria {
 
     @OneToMany(mappedBy = "categoria",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<CategoriaProducto> categoriaProductos = new LinkedHashSet<>();
+    private Set<Producto> productos = new LinkedHashSet<>();
 
 
 }

@@ -19,7 +19,6 @@ public class ProductoServiceImp implements ProductoService {
     @Override
     public Producto guardarProducto(Producto producto) {
 
-
         //AÑADIR UNA EXCEPCIÓN PARA EVITAR QUE SE AÑADAN UNA CATEGORIA QUE NO EXISTA
 
         return productoRepository.save(producto);
@@ -39,6 +38,13 @@ public class ProductoServiceImp implements ProductoService {
     @Override
     public Producto editarProducto(Producto producto) {
         return productoRepository.save(producto);
+    }
+
+    @Override
+    public List<Producto> verProducstosDeCategoria(Long categoriaId) {
+        Categoria categoria = new Categoria();
+        categoria.setId(categoriaId);
+        return productoRepository.findByCategoria(categoria);
     }
 
     @Override
