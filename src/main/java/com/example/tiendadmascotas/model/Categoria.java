@@ -25,7 +25,7 @@ public class Categoria {
     private String nombre;
 
     @Column(name = "descripcion")
-    private Integer descripcion;
+    private String descripcion;
 
     @OneToMany(mappedBy = "categoria",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore

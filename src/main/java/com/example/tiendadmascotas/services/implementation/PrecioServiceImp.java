@@ -9,14 +9,15 @@ import com.example.tiendadmascotas.services.PrecioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PrecioServiceImp implements PrecioService {
 
     @Autowired
     private PrecioRepository precioRepository;
 
-    @Autowired
-    private ProductoRepository productoRepository;
+
 
     @Override
     public Precio GuardarPrecio(Precio precio) {
@@ -34,6 +35,18 @@ public class PrecioServiceImp implements PrecioService {
 
         return precioRepository.save(precio);
     }
+
+    @Override
+    public List<Precio> VerTodosPrecios() {
+        return precioRepository.findAll();
+    }
+
+    @Override
+    public void EliminarPrecio(Precio precio) {
+        precioRepository.delete(precio);
+    }
+
+
 }
 
 

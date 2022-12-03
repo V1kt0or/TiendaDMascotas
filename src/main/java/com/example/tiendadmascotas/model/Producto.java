@@ -39,6 +39,7 @@ public class Producto {
     private Categoria categoria;
 
     @OneToOne(mappedBy = "producto")
+    @JsonIgnore
     private Precio precio;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "producto")
