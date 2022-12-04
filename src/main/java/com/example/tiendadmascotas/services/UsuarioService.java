@@ -11,6 +11,9 @@ public interface UsuarioService {
 
     public Usuario obtenerUsuario(String username);
 
+    public  Set<Usuario> onbtenerUsuariosRol(Long rolId);
+
+    public  Set<Usuario> onbtener5UsuariosRol(Long rolId);
 
     public void eliminarUsuario(Long usuarioId);
 }
