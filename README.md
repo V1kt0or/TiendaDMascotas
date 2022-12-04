@@ -260,6 +260,44 @@ Una vez generado tendran que colocarlo en la parte de Autorización Bearer Token
   }
   ```
   
+- **Ver productos  de una categoria   GET** 
+
+  -Ruta
+
+  ```javascript
+    http://localhost:8080/productos/categoria/IdDeLaCategoria
+  ```
+
+  -Respuesta (NOTA: El primer id se refiere al ID del precios, mientras que el segundo ID es del Producto),
+
+  ```javascript
+  {
+    {
+        "id": 1,
+        "precio": 25.0,
+        "descuento": 0.0,
+        "producto": {
+            "id": 1,
+            "nombre": "peluche",
+            "cantidad": 5,
+            "detalles": "ninguno",
+            "disponible": true,
+            "categoria": {
+                "id": 1,
+                "nombre": "juguete",
+                "descripcion": "ninguna"
+            }
+        }
+    },
+    {
+        ....
+        ....
+        ....
+    },
+    
+  }
+  ```
+  
 - **Ver producto     GET** 
 
   -Ruta
