@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UsuarioServiceImp implements UsuarioService {
@@ -35,6 +36,20 @@ public class UsuarioServiceImp implements UsuarioService {
     @Override
     public Usuario obtenerUsuario(String username) {
         return usuarioRepository.findByUsername(username);
+    }
+
+    @Override
+    public Set<Usuario> onbtenerUsuariosRol(Long rolId) {
+        Rol rol = new Rol();
+        rol.setId(rolId);
+        return usuarioRepository.findByRol(rol);
+    }
+
+    @Override
+    public Set<Usuario> onbtener5UsuariosRol(Long rolId) {
+        Rol rol = new Rol();
+        rol.setId(rolId);
+        return usuarioRepository.findFirst5ByRol(rol);
     }
 
     @Override

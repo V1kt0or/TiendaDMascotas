@@ -29,6 +29,16 @@ public class UsuarioController {
         return usuarioService.obtenerUsuario(usuarioId);
     }
 
+    @GetMapping("/rol/{rolId}")
+    public Set<Usuario> obtenerUsuarioPorRol(@PathVariable("rolId") Long rolId){
+        return usuarioService.onbtenerUsuariosRol(rolId);
+    }
+
+    @GetMapping("/rol5/{rolId}")
+    public Set<Usuario> obtener5UsuarioPorRol(@PathVariable("rolId") Long rolId){
+        return usuarioService.onbtener5UsuariosRol(rolId);
+    }
+
     @DeleteMapping("/{usuarioId}")
     public void eliminarUsuario(@PathVariable("usuarioId") Long usuarioId){
         usuarioService.eliminarUsuario(usuarioId);
