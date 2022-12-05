@@ -31,6 +31,9 @@ public class Usuario implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "nombre")
+    private String nombre;
+
     @Column(name = "apellidoPaterno")
     private String apellidoPaterno;
 
