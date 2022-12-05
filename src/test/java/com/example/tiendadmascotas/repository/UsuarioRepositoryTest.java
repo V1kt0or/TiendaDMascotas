@@ -1,23 +1,28 @@
-package com.example.tiendadmascotas;
+package com.example.tiendadmascotas.repository;
 
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.example.tiendadmascotas.TiendaDMascotasApplication;
 import com.example.tiendadmascotas.model.Usuario;
-import com.example.tiendadmascotas.repository.UsuarioRepository;
-import com.example.tiendadmascotas.repository.UsuarioRepositoryTest;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+        import org.junit.jupiter.api.DisplayName;
+        import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
-@SpringBootTest
-class TiendaDMascotasApplicationTests {
-
+@DataJpaTest
+public class UsuarioRepositoryTest {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -26,7 +31,6 @@ class TiendaDMascotasApplicationTests {
 
     @BeforeEach
     void setup(){
-        usuarioRepository.deleteAll();
         usuario = Usuario.builder()
                 .nombre("Christian")
                 .apellidoMaterno("Ramirez")
@@ -38,6 +42,30 @@ class TiendaDMascotasApplicationTests {
                 .direccion("casa 1")
                 .password("12345")
                 .build();
+    }
+
+    @DisplayName("Test para guardar un usuario")
+    @Test
+    void testGuardarEmpleado(){
+        //given - dado o condición previa o configuración
+        Usuario usuario1 = Usuario.builder()
+                .nombre("Christiana")
+                .apellidoMaterno("Santos")
+                .apellidoPaterno("Fal")
+                .correo("c2@gmail.com")
+                .fechaRegistro(new Date())
+                .edad(20)
+                .username("usuario2")
+                .direccion("casa 2")
+                .password("12345")
+                .build();
+
+        //when - acción o el comportamiento que vamos a probar
+        Usuario usuarioGuardado = usuarioRepository.save(usuario1);
+
+        //then - verificar la salida
+        assertThat(usuarioGuardado).isNotNull();
+        assertThat(usuarioGuardado.getId()).isGreaterThan(0);
     }
 
     @DisplayName("Test para listar a los usuarios")
@@ -66,32 +94,6 @@ class TiendaDMascotasApplicationTests {
         assertThat(listaUsuarios).isNotNull();
         assertThat(listaUsuarios.size()).isEqualTo(2);
     }
-
-    @DisplayName("Test para guardar un usuario")
-    @Test
-    void testGuardarEmpleado(){
-        //given - dado o condición previa o configuración
-        Usuario usuario1 = Usuario.builder()
-                .nombre("Christiana")
-                .apellidoMaterno("Santos")
-                .apellidoPaterno("Fal")
-                .correo("c2@gmail.com")
-                .fechaRegistro(new Date())
-                .edad(20)
-                .username("usuario2")
-                .direccion("casa 2")
-                .password("12345")
-                .build();
-
-        //when - acción o el comportamiento que vamos a probar
-        Usuario usuarioGuardado = usuarioRepository.save(usuario1);
-
-        //then - verificar la salida
-        assertThat(usuarioGuardado).isNotNull();
-        assertThat(usuarioGuardado.getId()).isGreaterThan(0);
-    }
-
-
 
     @DisplayName("Test para obtener un usuaerio por ID")
     @Test
@@ -139,31 +141,12 @@ class TiendaDMascotasApplicationTests {
     @DisplayName("Test para buscar usuario por nombre")
     @Test
     void testBuscarUsuario(){
-
-        Usuario usuario1 = Usuario.builder()
-                .nombre("Christi")
-                .apellidoMaterno("Santi")
-                .apellidoPaterno("Fal")
-                .correo("c2@gmail.com")
-                .fechaRegistro(new Date())
-                .edad(20)
-                .username("usuario33")
-                .direccion("casa 2")
-                .password("12345")
-                .build();
-        usuarioRepository.save(usuario1);
+        usuarioRepository.save(usuario);
 
         //when
-        Optional<Usuario> usuarioBuscado = Optional.ofNullable(usuarioRepository.findByUsername("usuario33"));
+        Usuario usuarioBuscado = usuarioRepository.findByUsername("usuario1");
 
         //then
-        assertThat(usuarioBuscado).isNotEmpty();
+        assertThat(usuarioBuscado).isEqualTo(usuario);
     }
-
-
-    @Test
-    void contextLoads() {
-
-    }
-
 }
