@@ -2,12 +2,12 @@ package com.example.tiendadmascotas;
 
 import com.example.tiendadmascotas.model.Usuario;
 import com.example.tiendadmascotas.repository.UsuarioRepository;
-import com.example.tiendadmascotas.repository.UsuarioRepositoryTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class TiendaDMascotasApplicationTests {
 
 
@@ -42,7 +43,7 @@ class TiendaDMascotasApplicationTests {
 
     @DisplayName("Test para listar a los usuarios")
     @Test
-    void testListarEmpleados(){
+    void testListarUsuarios(){
         //given
         Usuario usuario1 = Usuario.builder()
                 .nombre("Christiana")
@@ -69,7 +70,7 @@ class TiendaDMascotasApplicationTests {
 
     @DisplayName("Test para guardar un usuario")
     @Test
-    void testGuardarEmpleado(){
+    void testGuardarUsuario(){
         //given - dado o condición previa o configuración
         Usuario usuario1 = Usuario.builder()
                 .nombre("Christiana")
@@ -95,7 +96,7 @@ class TiendaDMascotasApplicationTests {
 
     @DisplayName("Test para obtener un usuaerio por ID")
     @Test
-    void testObtenerEmpleadoPorId(){
+    void testObtenerUsuarioPorId(){
         usuarioRepository.save(usuario);
 
         //when - comportamiento o accion que vamos a probar
@@ -107,7 +108,7 @@ class TiendaDMascotasApplicationTests {
 
     @DisplayName("Test para actualizar un usuario")
     @Test
-    void testActualizarEmpleado(){
+    void testActualizarUsuario(){
         usuarioRepository.save(usuario);
 
         //when
@@ -122,9 +123,9 @@ class TiendaDMascotasApplicationTests {
         assertThat(usuarioActualizado.getNombre()).isEqualTo("Christian Raul");
     }
 
-    @DisplayName("Test para eliminar un empleado")
+    @DisplayName("Test para eliminar un usuario")
     @Test
-    void testEliminarEmpleado(){
+    void testEliminarUsuario(){
         usuarioRepository.save(usuario);
 
         //when
@@ -161,9 +162,10 @@ class TiendaDMascotasApplicationTests {
     }
 
 
-    @Test
+
+    /*@Test
     void contextLoads() {
 
-    }
+    }*/
 
 }
