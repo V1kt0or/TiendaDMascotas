@@ -5,28 +5,31 @@ import com.example.tiendadmascotas.repository.PagoRepository;
 import com.example.tiendadmascotas.repository.PedidoRepository;
 import com.example.tiendadmascotas.services.PagoService;
 import com.example.tiendadmascotas.services.PedidoService;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
+@Service
 public class PagoServiceImp implements PagoService {
     @Autowired
     public PagoRepository pagoRepository;
 
     @java.lang.Override
-    public Pago guardarPedido(Pago pago) {
+    public Pago guardarPago(Pago pago) {
         return pagoRepository.save(pago);
     }
 
     @java.lang.Override
-    public Pago obtenerPedido(Long idP) {
+    public Pago obtenerPago(Long idP) {
         return pagoRepository.findByID(idP);
     }
 
     @java.lang.Override
-    public void eliminarPedido(Long Id) {
+    public void eliminarPago(Long Id) {
 
     }
 
     @java.lang.Override
-    public void actualizarPedido(Long Id) {
+    public void actualizarPago(Long Id) {
 
     }
 }

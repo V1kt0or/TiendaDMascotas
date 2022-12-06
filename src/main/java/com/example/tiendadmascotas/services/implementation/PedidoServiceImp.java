@@ -3,7 +3,10 @@ package com.example.tiendadmascotas.services.implementation;
 import com.example.tiendadmascotas.model.Pedido;
 import com.example.tiendadmascotas.repository.PedidoRepository;
 import com.example.tiendadmascotas.services.PedidoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PedidoServiceImp implements PedidoService {
     @Autowired
     public PedidoRepository pedidoRepository;

@@ -4,9 +4,7 @@ import com.example.tiendadmascotas.model.Pago;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PagoRepository extends JpaRepository<Pago,Long> {
-<<<<<<< HEAD
+    
+    public Pago findByID(Long idP);
 
-
-=======
->>>>>>> master
 }
