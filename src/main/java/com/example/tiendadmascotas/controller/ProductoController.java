@@ -70,6 +70,11 @@ public class ProductoController {
         return precioService.VerTodosPrecios();
     }
 
+    @GetMapping("/ordenado/")
+    public List<Precio> obtenerProductosOrdenados() {
+        return precioService.VerPreciosEnOrden();
+    }
+
 
     @GetMapping("/categoria/{categoryId}")
     public List<Precio> obtenerTodosProductosDeCategoria(@PathVariable("categoryId") Long categoryId){

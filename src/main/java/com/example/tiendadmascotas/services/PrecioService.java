@@ -17,4 +17,6 @@ public interface PrecioService {
 
     public void EliminarPrecio(Precio precio);
 
+    public List<Precio> VerPreciosEnOrden();
+
 }

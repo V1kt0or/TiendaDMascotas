@@ -46,6 +46,11 @@ public class PrecioServiceImp implements PrecioService {
         precioRepository.delete(precio);
     }
 
+    @Override
+    public List<Precio> VerPreciosEnOrden() {
+        return precioRepository.findAllByOrderByMonto();
+    }
+
 
 }
 
