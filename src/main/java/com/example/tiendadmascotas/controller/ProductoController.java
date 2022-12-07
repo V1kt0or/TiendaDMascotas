@@ -54,7 +54,7 @@ public class ProductoController {
         return precioService.VerPrecio(producto);
     }
 
-    @PutMapping("/{productoId}")
+    @PutMapping("/")
     public Precio modificarProducto(@RequestBody ProductoPrecio productoPrecio){
         Producto producto;
         Precio precio;
