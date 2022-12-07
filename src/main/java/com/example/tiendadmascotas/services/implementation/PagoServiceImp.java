@@ -25,7 +25,7 @@ public class PagoServiceImp implements PagoService {
 
     @java.lang.Override
     public void eliminarPago(Long Id) {
-        pagoRepository.deleteById(Id);
+
     }
 
     @java.lang.Override

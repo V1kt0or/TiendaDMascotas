@@ -10,5 +10,5 @@ public interface PedidoService {
 
     public void eliminarPedido(Long usuarioId);
 
-    public void actualizarPedido(Long usuarioId);
+    public void actualizarPedido(Long usuarioId, String estado);
 }
