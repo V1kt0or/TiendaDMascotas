@@ -23,11 +23,11 @@ public class PedidoServiceImp implements PedidoService {
 
     @java.lang.Override
     public void eliminarPedido(Long usuarioId) {
-
+        pedidoRepository.deleteById(usuarioId);
     }
 
     @java.lang.Override
-    public void actualizarPedido(Long IdP, String estado) {
+    public void actualizarPedido(Long IdP) {
         Pedido pedidoU= obtenerPedido(IdP);
         pedidoU.setEstado("true");
     }
