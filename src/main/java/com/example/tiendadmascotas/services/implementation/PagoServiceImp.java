@@ -20,7 +20,7 @@ public class PagoServiceImp implements PagoService {
 
     @java.lang.Override
     public Pago obtenerPago(Long idP) {
-        return pagoRepository.findByID(idP);
+        return pagoRepository.findById(idP).get();
     }
 
     @java.lang.Override

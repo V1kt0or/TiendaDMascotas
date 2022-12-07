@@ -18,7 +18,7 @@ public class PedidoServiceImp implements PedidoService {
 
     @java.lang.Override
     public Pedido obtenerPedido(Long idP) {
-        return pedidoRepository.findByID(idP);
+        return pedidoRepository.findById(idP).get();
     }
 
     @java.lang.Override
