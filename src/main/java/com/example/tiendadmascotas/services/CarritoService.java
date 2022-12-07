@@ -18,4 +18,6 @@ public interface CarritoService {
     public void eliminarCarrito(Long carritoId);
 
     public List<Producto> verProducstosDeCarrito(Long carritoId);
+
+    public Carrito verUsuarioCarrito(Long Id);
 }

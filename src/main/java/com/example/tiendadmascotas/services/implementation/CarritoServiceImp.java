@@ -3,6 +3,7 @@ package com.example.tiendadmascotas.services.implementation;
 import com.example.tiendadmascotas.model.Carrito;
 import com.example.tiendadmascotas.model.CarritoProducto;
 import com.example.tiendadmascotas.model.Producto;
+import com.example.tiendadmascotas.model.Usuario;
 import com.example.tiendadmascotas.repository.CarritoProductoRepository;
 import com.example.tiendadmascotas.repository.CarritoRepository;
 
@@ -26,6 +27,7 @@ public class CarritoServiceImp implements CarritoService {
 
     @Override
     public Carrito crearCarrito(Carrito carrito) {
+
         return carritoRepository.save(carrito);
     }
 
@@ -55,6 +57,14 @@ public class CarritoServiceImp implements CarritoService {
             }
         }
         return productos;
+    }
+
+    @Override
+    public Carrito verUsuarioCarrito(Long Id) {
+        Usuario usuario=new Usuario();
+        usuario.setId(Id);
+        return carritoRepository.findByUsuario(usuario);
+
     }
 
 }

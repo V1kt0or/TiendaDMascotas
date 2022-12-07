@@ -28,11 +28,12 @@ public class Carrito {
     private Double precioTotal;
 
 
-
     @OneToOne(mappedBy = "carrito")
+    @JsonIgnore
     private Pago pago;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private Usuario usuario;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "carrito")
