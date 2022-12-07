@@ -1,5 +1,6 @@
 package com.example.tiendadmascotas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -59,6 +60,7 @@ public class Usuario implements UserDetails {
     private Rol rol;
 
     @OneToOne(mappedBy = "usuario")
+    @JsonIgnore
     private Carrito carrito;
 
     @Override
