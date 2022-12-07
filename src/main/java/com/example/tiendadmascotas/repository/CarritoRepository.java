@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CarritoRepository extends JpaRepository<Carrito,Long> {
 
-    public List<Producto> findCarritoProducto(Long Id);
+
 
 }
