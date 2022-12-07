@@ -4,9 +4,13 @@ package com.example.tiendadmascotas.controller;
 import com.example.tiendadmascotas.model.Carrito;
 import com.example.tiendadmascotas.model.Precio;
 import com.example.tiendadmascotas.model.Producto;
+import com.example.tiendadmascotas.model.Usuario;
 import com.example.tiendadmascotas.services.CarritoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/carrito")
@@ -20,7 +24,13 @@ public class CarritoController {
         public Carrito carritoR;
         public Producto productoR;
     }
+    @GetMapping("/usuario/{usuarioId}")
+    public Carrito obtenerCarritoUsuario(@PathVariable("usuarioId") Long usuarioId){
+        return carritoService.verUsuarioCarrito(usuarioId);
 
+    }
+
+    
     @PostMapping("/añadir")
     public Producto addCarrito(@RequestBody CarritoProducto carritoProducto){
         Producto producto;
