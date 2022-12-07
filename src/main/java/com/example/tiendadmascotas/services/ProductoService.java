@@ -17,5 +17,6 @@ public interface ProductoService {
     public Producto editarProducto(Producto producto);
 
     public List<Producto> verProducstosDeCategoria(Long categoriaId);
+
     public void eliminarProducto(Long productoId);
 }
