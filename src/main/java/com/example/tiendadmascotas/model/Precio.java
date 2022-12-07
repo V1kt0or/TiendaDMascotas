@@ -18,8 +18,8 @@ public class Precio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "precio")
-    private Double precio;
+    @Column(name = "monto")
+    private Double monto;
 
     @Column(name = "descuento")
     private Double descuento;
