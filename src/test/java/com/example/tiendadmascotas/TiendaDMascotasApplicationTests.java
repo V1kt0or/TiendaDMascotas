@@ -1,14 +1,26 @@
 package com.example.tiendadmascotas;
 
+import com.example.tiendadmascotas.controller.CategoriaController;
+import com.example.tiendadmascotas.model.Categoria;
 import com.example.tiendadmascotas.model.Usuario;
+import com.example.tiendadmascotas.repository.CategoríaRepository;
 import com.example.tiendadmascotas.repository.UsuarioRepository;
+<<<<<<< Updated upstream
 import com.example.tiendadmascotas.repository.UsuarioRepositoryTest;
+=======
+import org.hamcrest.CoreMatchers;
+>>>>>>> Stashed changes
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import static org.hamcrest.Matchers.*;
 
 import java.util.Date;
 import java.util.List;
@@ -22,11 +34,18 @@ class TiendaDMascotasApplicationTests {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private CategoríaRepository categoríaRepository;
+
+    @Autowired
+    private CategoriaController categoriaController;
+
     private Usuario usuario;
 
     @BeforeEach
     void setup(){
         usuarioRepository.deleteAll();
+        categoríaRepository.deleteAll();
         usuario = Usuario.builder()
                 .nombre("Christian")
                 .apellidoMaterno("Ramirez")
@@ -160,8 +179,54 @@ class TiendaDMascotasApplicationTests {
         assertThat(usuarioBuscado).isNotEmpty();
     }
 
-
+    @DisplayName("Test en controller para guardar categorias")
     @Test
+    void testGuardarCategoria(){
+        Categoria categoria = Categoria.builder().id(1l).nombre("Comida").build();
+
+        //when - acción o el comportamiento que vamos a probar
+        Categoria categoraGuardada = categoriaController.guardarCategoria(categoria);
+
+        //then - verificar la salida
+        assertThat(categoraGuardada).isNotNull();
+        assertThat(categoraGuardada.getId()).isGreaterThan(0);
+    }
+
+<<<<<<< Updated upstream
+    @Test
+=======
+    @DisplayName("Test en controller para eliminar una categoria")
+    @Test
+    void testEliminarCategoria(){
+        Categoria categoria = Categoria.builder().id(1l).nombre("Comida").build();
+        categoríaRepository.save(categoria);
+
+        //when
+        categoriaController.eliminarCategoria(categoria.getId());
+        Optional<Categoria> categoriaOptional = categoríaRepository.findById(categoria.getId());
+
+        //then
+        assertThat(categoriaOptional).isEmpty();
+    }
+
+    @DisplayName("Test en controller para listar categorias")
+    @Test
+    void testListarCategorias(){
+        Categoria categoria = Categoria.builder().id(1l).nombre("Comida").build();
+        categoríaRepository.save(categoria);
+
+        Categoria categoria1 = Categoria.builder().id(2l).nombre("Juguetes").build();
+        categoríaRepository.save(categoria1);
+
+        //when
+        List<Categoria> listaCategoriass = categoríaRepository.findAll();
+
+        //then
+        assertThat(listaCategoriass).isNotNull();
+        assertThat(listaCategoriass.size()).isEqualTo(2);
+    }
+    /*@Test
+>>>>>>> Stashed changes
     void contextLoads() {
 
     }
