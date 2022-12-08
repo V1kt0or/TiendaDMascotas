@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-
 @Service
 public class CarritoServiceImp implements CarritoService {
 
@@ -32,12 +30,13 @@ public class CarritoServiceImp implements CarritoService {
     }
 
     @Override
-    public Producto addCarritoProducto(Carrito carrito,Producto producto) {
-        CarritoProducto carritoProducto=new CarritoProducto();
+    public CarritoProducto addCarritoProducto(Carrito carrito,Producto producto) {
+        CarritoProducto carritoProducto = new CarritoProducto();
         carritoProducto.setId(carrito.getId());
         carritoProducto.setCarrito(carrito);
         carritoProducto.setProducto(producto);
-        return producto;
+        carritoProductoRepository.save(carritoProducto); //Guardar el registro
+        return carritoProductoRepository.save(carritoProducto);
     }
 
     @Override
@@ -48,12 +47,12 @@ public class CarritoServiceImp implements CarritoService {
     }
 
     @Override
-    public List<Producto> verProducstosDeCarrito(Long carritoId) {
-        List<CarritoProducto> productosPorCarrito= carritoProductoRepository.findAll();
-        List<Producto> productos=new ArrayList<>();
-        for (int i=0; i<productosPorCarrito.size(); i++) {
-            if(Objects.equals(productosPorCarrito.get(i).getCarrito().getId(), carritoId)){
-                productos.add(productosPorCarrito.get(i).getProducto());
+    public List<Producto> verProductosDeCarrito(Long carritoId) {
+        List<CarritoProducto> productosPorCarrito = carritoProductoRepository.findAll();
+        List<Producto> productos = new ArrayList<>();
+        for (CarritoProducto carritoProducto : productosPorCarrito) {
+            if (Objects.equals(carritoProducto.getCarrito().getId(), carritoId)) {
+                productos.add(carritoProducto.getProducto());
             }
         }
         return productos;

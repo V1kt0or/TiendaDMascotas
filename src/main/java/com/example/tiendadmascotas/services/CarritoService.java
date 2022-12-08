@@ -4,20 +4,17 @@ import com.example.tiendadmascotas.model.Carrito;
 import com.example.tiendadmascotas.model.CarritoProducto;
 import com.example.tiendadmascotas.model.Producto;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public interface CarritoService {
 
-    public Carrito crearCarrito(Carrito carrito);
+    Carrito crearCarrito(Carrito carrito);
 
+    CarritoProducto addCarritoProducto(Carrito carrito, Producto producto);
 
-    public Producto addCarritoProducto(Carrito carrito, Producto producto);
+    void eliminarCarrito(Long carritoId);
 
-    public void eliminarCarrito(Long carritoId);
+    List<Producto> verProductosDeCarrito(Long carritoId);
 
-    public List<Producto> verProducstosDeCarrito(Long carritoId);
-
-    public Carrito verUsuarioCarrito(Long Id);
+    Carrito verUsuarioCarrito(Long Id);
 }
