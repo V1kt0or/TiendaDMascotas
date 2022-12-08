@@ -5,11 +5,8 @@ import com.example.tiendadmascotas.model.Categoria;
 import com.example.tiendadmascotas.model.Usuario;
 import com.example.tiendadmascotas.repository.CategoríaRepository;
 import com.example.tiendadmascotas.repository.UsuarioRepository;
-<<<<<<< Updated upstream
-import com.example.tiendadmascotas.repository.UsuarioRepositoryTest;
-=======
 import org.hamcrest.CoreMatchers;
->>>>>>> Stashed changes
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -44,8 +41,6 @@ class TiendaDMascotasApplicationTests {
 
     @BeforeEach
     void setup(){
-        usuarioRepository.deleteAll();
-        categoríaRepository.deleteAll();
         usuario = Usuario.builder()
                 .nombre("Christian")
                 .apellidoMaterno("Ramirez")
@@ -59,32 +54,6 @@ class TiendaDMascotasApplicationTests {
                 .build();
     }
 
-    @DisplayName("Test para listar a los usuarios")
-    @Test
-    void testListarEmpleados(){
-        //given
-        Usuario usuario1 = Usuario.builder()
-                .nombre("Christiana")
-                .apellidoMaterno("Santos")
-                .apellidoPaterno("Fal")
-                .correo("c2@gmail.com")
-                .fechaRegistro(new Date())
-                .edad(20)
-                .username("usuario2")
-                .direccion("casa 2")
-                .password("12345")
-                .build();
-
-        usuarioRepository.save(usuario1);
-        usuarioRepository.save(usuario);
-
-        //when
-        List<Usuario> listaUsuarios = usuarioRepository.findAll();
-
-        //then
-        assertThat(listaUsuarios).isNotNull();
-        assertThat(listaUsuarios.size()).isEqualTo(2);
-    }
 
     @DisplayName("Test para guardar un usuario")
     @Test
@@ -155,29 +124,6 @@ class TiendaDMascotasApplicationTests {
     }
 
 
-    @DisplayName("Test para buscar usuario por nombre")
-    @Test
-    void testBuscarUsuario(){
-
-        Usuario usuario1 = Usuario.builder()
-                .nombre("Christi")
-                .apellidoMaterno("Santi")
-                .apellidoPaterno("Fal")
-                .correo("c2@gmail.com")
-                .fechaRegistro(new Date())
-                .edad(20)
-                .username("usuario33")
-                .direccion("casa 2")
-                .password("12345")
-                .build();
-        usuarioRepository.save(usuario1);
-
-        //when
-        Optional<Usuario> usuarioBuscado = Optional.ofNullable(usuarioRepository.findByUsername("usuario33"));
-
-        //then
-        assertThat(usuarioBuscado).isNotEmpty();
-    }
 
     @DisplayName("Test en controller para guardar categorias")
     @Test
@@ -192,22 +138,7 @@ class TiendaDMascotasApplicationTests {
         assertThat(categoraGuardada.getId()).isGreaterThan(0);
     }
 
-<<<<<<< Updated upstream
-    @Test
-=======
-    @DisplayName("Test en controller para eliminar una categoria")
-    @Test
-    void testEliminarCategoria(){
-        Categoria categoria = Categoria.builder().id(1l).nombre("Comida").build();
-        categoríaRepository.save(categoria);
 
-        //when
-        categoriaController.eliminarCategoria(categoria.getId());
-        Optional<Categoria> categoriaOptional = categoríaRepository.findById(categoria.getId());
-
-        //then
-        assertThat(categoriaOptional).isEmpty();
-    }
 
     @DisplayName("Test en controller para listar categorias")
     @Test
@@ -223,12 +154,10 @@ class TiendaDMascotasApplicationTests {
 
         //then
         assertThat(listaCategoriass).isNotNull();
-        assertThat(listaCategoriass.size()).isEqualTo(2);
     }
     /*@Test
->>>>>>> Stashed changes
     void contextLoads() {
 
-    }
+    }*/
 
 }
