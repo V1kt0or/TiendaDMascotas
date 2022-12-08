@@ -27,13 +27,19 @@ public class CarritoController {
     }
 
     @GetMapping("/{carritoId}/productos")
-    public List<Producto> obtenerProductosCarrito(@PathVariable("carritoId") Long carritoId){
+    public List<Precio> obtenerProductosCarrito(@PathVariable("carritoId") Long carritoId){
         return carritoService.verProductosDeCarrito(carritoId);
     }
     
     @PostMapping("/añadir")
     public com.example.tiendadmascotas.model.CarritoProducto addCarrito(@RequestBody CarritoProducto carritoProducto){
         return carritoService.addCarritoProducto(carritoProducto.carritoR,carritoProducto.productoR);
+    }
+
+    @DeleteMapping("/eliminar/{carritoId}/{productoId}")
+    public void eliminarProductoDeCarrito(@PathVariable("carritoId") Long carritoId, @PathVariable("productoId") Long productoId){
+        carritoService.eliminarProductoCarrito(carritoId,productoId);
+
     }
 
 
