@@ -25,7 +25,7 @@ public class Pago {
     @Column(name = "monto")
     private Double monto;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     private Carrito carrito;
 
     @OneToOne(mappedBy = "pago")

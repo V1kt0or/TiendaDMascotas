@@ -2,16 +2,21 @@ package com.example.tiendadmascotas.services.implementation;
 
 import com.example.tiendadmascotas.model.Pago;
 import com.example.tiendadmascotas.repository.PagoRepository;
-import com.example.tiendadmascotas.repository.PedidoRepository;
 import com.example.tiendadmascotas.services.PagoService;
-import com.example.tiendadmascotas.services.PedidoService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @Service
 public class PagoServiceImp implements PagoService {
     @Autowired
     public PagoRepository pagoRepository;
+
+    @Override
+    public List<Pago> obtenerPagos() {
+        return pagoRepository.findAll();
+    }
 
     @java.lang.Override
     public Pago guardarPago(Pago pago) {
@@ -26,10 +31,5 @@ public class PagoServiceImp implements PagoService {
     @java.lang.Override
     public void eliminarPago(Long Id) {
         pagoRepository.deleteById(Id);
-    }
-
-    @java.lang.Override
-    public void actualizarPago(Long Id) {
-
     }
 }

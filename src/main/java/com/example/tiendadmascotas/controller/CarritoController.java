@@ -16,6 +16,7 @@ public class CarritoController {
     @Autowired
     public  CarritoService carritoService;
 
+
     public static class CarritoProducto {
         public Carrito carritoR;
         public Producto productoR;
@@ -42,15 +43,18 @@ public class CarritoController {
 
     }
 
-
     @PostMapping("/")
     public Carrito crearCarrito(@RequestBody Carrito carrito){
         return carritoService.crearCarrito(carrito);
     }
 
-    @DeleteMapping("/{carritoId}")
+    @DeleteMapping("/{carritoId}") //Elimina el carrito, pero mejor es eliminar los productos dentro
     public void eliminarProducto(@PathVariable("carritoId") Long carritoId){
         carritoService.eliminarCarrito(carritoId);
     }
 
+    @DeleteMapping("/vaciar/{carritoId}")
+    public void vaciarCarrito(@PathVariable("carritoId") Long carritoId){
+        carritoService.vaciarCarrito(carritoId); //Vacial y eliminar son cosas diferentes
+    }
 }

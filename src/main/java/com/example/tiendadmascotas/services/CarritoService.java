@@ -20,4 +20,6 @@ public interface CarritoService {
     List<Precio> verProductosDeCarrito(Long carritoId);
 
     Carrito verUsuarioCarrito(Long Id);
+
+    void vaciarCarrito(Long carritoId);
 }

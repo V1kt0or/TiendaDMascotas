@@ -1,15 +1,16 @@
 package com.example.tiendadmascotas.services;
 
 import com.example.tiendadmascotas.model.Pago;
-import com.example.tiendadmascotas.model.Pedido;
+
+import java.util.List;
 
 public interface PagoService {
-    public Pago guardarPago(Pago pago);
+    List<Pago> obtenerPagos();
 
-    public Pago obtenerPago(Long idP);
+    Pago guardarPago(Pago pago);
 
-    public void eliminarPago(Long Id);
+    Pago obtenerPago(Long idP);
 
-    public void actualizarPago(Long Id);
+    void eliminarPago(Long Id);
 
 }

@@ -6,12 +6,20 @@ import com.example.tiendadmascotas.services.PagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pago")
 @CrossOrigin("*")
 public class PagoController {
     @Autowired
     public PagoService pagoService;
+
+    @GetMapping("/")
+    public List<Pago> obtenerPagos(){
+        return pagoService.obtenerPagos();
+    }
+
 
     @PostMapping("/")
     public Pago guardarPago(@RequestBody Pago pago){

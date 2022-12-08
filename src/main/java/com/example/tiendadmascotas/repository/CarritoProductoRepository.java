@@ -4,12 +4,16 @@ import com.example.tiendadmascotas.model.Carrito;
 import com.example.tiendadmascotas.model.CarritoProducto;
 import com.example.tiendadmascotas.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface CarritoProductoRepository extends JpaRepository<CarritoProducto,Long> {
 
-    public CarritoProducto findTopByProductoAndCarrito(Producto producto, Carrito carrito);
+    CarritoProducto findTopByProductoAndCarrito(Producto producto, Carrito carrito);
 
-    public List<CarritoProducto> findAllByCarrito(Carrito carrito);
+    List<CarritoProducto> findAllByCarrito(Carrito carrito);
+
+    @Transactional
+    void deleteAllByCarrito(Carrito carrito); //Eliminar productos locales del carrito una vez pagado
 }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 @Service
 public class CarritoServiceImp implements CarritoService {
 
@@ -81,6 +80,14 @@ public class CarritoServiceImp implements CarritoService {
         usuario.setId(Id);
         return carritoRepository.findByUsuario(usuario);
 
+    }
+
+    @Override
+    public void vaciarCarrito(Long carritoId) {
+        Carrito carrito;
+        carrito = new Carrito();
+        carrito.setId(carritoId);
+        carritoProductoRepository.deleteAllByCarrito(carrito);
     }
 
 }
