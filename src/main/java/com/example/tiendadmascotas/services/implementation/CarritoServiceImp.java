@@ -46,7 +46,6 @@ public class CarritoServiceImp implements CarritoService {
         producto.setId(productoId);
 
         CarritoProducto carritoProducto = carritoProductoRepository.findTopByProductoAndCarrito(producto,carrito);
-        System.out.println(carritoProducto.getCarrito().getId());
         CarritoProducto carritoProducto1 = new CarritoProducto();
         carritoProducto1.setId(carritoProducto.getId());
         carritoProductoRepository.delete(carritoProducto1);
@@ -87,7 +86,12 @@ public class CarritoServiceImp implements CarritoService {
         Carrito carrito;
         carrito = new Carrito();
         carrito.setId(carritoId);
-        carritoProductoRepository.deleteAllByCarrito(carrito);
+        List<CarritoProducto> productosPorCarrito = carritoProductoRepository.findAllByCarrito(carrito);
+        for (CarritoProducto carritoProducto : productosPorCarrito) {
+            CarritoProducto carritoProducto1 = new CarritoProducto();
+            carritoProducto1.setId(carritoProducto.getId());
+            carritoProductoRepository.delete(carritoProducto1);
+        }
     }
 
 }

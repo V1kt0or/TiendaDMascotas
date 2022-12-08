@@ -14,6 +14,5 @@ public interface CarritoProductoRepository extends JpaRepository<CarritoProducto
 
     List<CarritoProducto> findAllByCarrito(Carrito carrito);
 
-    @Transactional
     void deleteAllByCarrito(Carrito carrito); //Eliminar productos locales del carrito una vez pagado
 }
